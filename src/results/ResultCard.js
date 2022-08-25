@@ -4,8 +4,7 @@ import { Col, Button, Row } from "reactstrap";
 function ResultCard({result}) {
   const [isHoveringIMG, setIsHoveringIMG] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  
-  
+  const [favorite, setFavorite] = useState([])
 
   //handle button hovers
   const handleMouseEnter = () => {
@@ -35,6 +34,8 @@ function ResultCard({result}) {
   const handleToggle = () => {
     localStorage.setItem('is-open', JSON.stringify(!isOpen));
     setOpen(!isOpen);
+    setFavorite([result])
+    
   };
   
   //Clear localstorage of pokemon, reset Localstorage state and turn button to original color
@@ -42,6 +43,7 @@ function ResultCard({result}) {
     localStorage.clear()
     setOpen(!isOpen)
     handleMouseLeave()
+    setFavorite([])
   }
   
 
@@ -54,6 +56,7 @@ stats: [{…}]
 types: [{…}]
 weight:
 */
+console.log(favorite[0])
   return (
     <Col className="ResultCard p-2 col-md-12">
       <div 
@@ -182,6 +185,24 @@ weight:
          Delete
         </Button>}
         </Col>
+      </Row>
+      <Row>
+          <h1 className="mt-2">Favorite Pokemon</h1>
+          {favorite.length ? <> 
+          
+          <Col>
+          <img 
+            alt="Pokemon"
+            src={favorite[0].sprites["front_shiny"]} 
+            className="mx-auto col-md-4 w-100 "
+            onMouseOver={handleMouseOver} 
+            
+          />
+          </Col>
+          <Col className="mx-auto">
+            <h2>{favorite[0].name}</h2>
+          </Col>
+          </> : <><h5>No favorite added!</h5></> }
       </Row>
     </Col>
   )

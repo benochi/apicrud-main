@@ -29,6 +29,7 @@ function SearchForm(){
       setFormErrors("Value can't be empty.")
       return
     }
+    //Handle api call and handle error message if invalid name
     try{
       let result = await APICalls.searchPokeAPIByForm(pokeSearch)
       setResults([result])
@@ -36,7 +37,6 @@ function SearchForm(){
       console.log(err)
       setFormErrors('Search must be a valid Pokemon name.')
     }
-
   } 
   
   //Update form data
@@ -98,6 +98,7 @@ function SearchForm(){
           </Row>
           : null}
         </Row>
+        
       </Container>   
   )
 }

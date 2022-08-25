@@ -11,9 +11,9 @@ class APICalls {
       return res.data      
   }
 
-  //GET https://jsonplaceholder.typicode.com/posts
-  static async searchPokeAPI() {
-    let res = await axios.get(API_URL)
+  //GET https://pokeapi.co/api/v2/item/{id or name}/ route for getting items if time allows
+  static async searchPokeAPI(id) {
+    let res = await axios.get(API_URL +`item/${id}/`)
     return res.data
   }
 
