@@ -46,17 +46,6 @@ function ResultCard({result}) {
     setFavorite([])
   }
   
-
-/* Result has the following: 
-abilities:  [{…}, {…}] base_experience, forms: [{…}] game_indices: [{…}]
-height, held_items: [] id: is_default: location_area_encounters: "https://pokeapi.co/api/v2/pokemon/6/encounters"
-moves: [{…} ] name: order: past_types: [] species: {name: , url: ''}
-sprites: {back_default: '', back_female: null, back_shiny: '', back_shiny_female: null, front_default: '', }
-stats: [{…}]
-types: [{…}]
-weight:
-*/
-console.log(favorite[0])
   return (
     <Col className="ResultCard p-2 col-md-12">
       <div 
@@ -71,7 +60,6 @@ console.log(favorite[0])
             src={result.sprites["front_default"]} 
             className="mx-auto col-md-4 w-100 "
             onMouseOver={handleMouseOver} 
-            
           />
           </Col>
           <Col className="mt-2 mx-auto col-md-4">
@@ -136,7 +124,6 @@ console.log(favorite[0])
         <h4>Abilities:</h4>
           <ul className="text-left col-md-4">
           {result.abilities.map(( ability ) => (
-            
             <a 
               key={ability.ability.name}
               href={ability.ability.url} 
@@ -189,14 +176,12 @@ console.log(favorite[0])
       <Row>
           <h1 className="mt-2">Favorite Pokemon</h1>
           {favorite.length ? <> 
-          
           <Col>
           <img 
             alt="Pokemon"
             src={favorite[0].sprites["front_shiny"]} 
             className="mx-auto col-md-4 w-100 "
             onMouseOver={handleMouseOver} 
-            
           />
           </Col>
           <Col className="mx-auto">
